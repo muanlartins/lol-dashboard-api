@@ -58,11 +58,11 @@ app.MapGet("/summoner/{summonerId}/champion/{championId}", async (string summone
   return champion;
 });
 
-app.MapGet("/summoner/{summonerId}/masteries", async (string summonerId) =>
+app.MapGet("/summoner/{puuid}/masteries", async (string puuid) =>
 {
   Mastery[] masteries = await 
     request.JsonRequest<Mastery[]>(
-      "/lol-collections/v1/inventories/{summonerId}/champion-mastery".Replace("{summonerId}", summonerId), 
+      "/lol-champion-mastery/v1/{puuid}/champion-mastery".Replace("{puuid}", puuid), 
       true
     );
 
